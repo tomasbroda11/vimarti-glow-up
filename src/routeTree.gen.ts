@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ClientesRouteImport } from './routes/clientes'
+import { Route as ConfiguracionRouteImport } from './routes/configuracion'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ProductosRouteImport } from './routes/productos'
+import { Route as ReportesRouteImport } from './routes/reportes'
+import { Route as VentasIndexRouteImport } from './routes/ventas.index'
+import { Route as VentasSaleIdRouteImport } from './routes/ventas.$saleId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClientesRoute = ClientesRouteImport.update({
+  id: '/clientes',
+  path: '/clientes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfiguracionRoute = ConfiguracionRouteImport.update({
+  id: '/configuracion',
+  path: '/configuracion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductosRoute = ProductosRouteImport.update({
+  id: '/productos',
+  path: '/productos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportesRoute = ReportesRouteImport.update({
+  id: '/reportes',
+  path: '/reportes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VentasIndexRoute = VentasIndexRouteImport.update({
+  id: '/ventas/',
+  path: '/ventas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VentasSaleIdRoute = VentasSaleIdRouteImport.update({
+  id: '/ventas/$saleId',
+  path: '/ventas/$saleId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/clientes': typeof ClientesRoute
+  '/configuracion': typeof ConfiguracionRoute
+  '/login': typeof LoginRoute
+  '/productos': typeof ProductosRoute
+  '/reportes': typeof ReportesRoute
+  '/ventas/$saleId': typeof VentasSaleIdRoute
+  '/ventas/': typeof VentasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/clientes': typeof ClientesRoute
+  '/configuracion': typeof ConfiguracionRoute
+  '/login': typeof LoginRoute
+  '/productos': typeof ProductosRoute
+  '/reportes': typeof ReportesRoute
+  '/ventas/$saleId': typeof VentasSaleIdRoute
+  '/ventas': typeof VentasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/clientes': typeof ClientesRoute
+  '/configuracion': typeof ConfiguracionRoute
+  '/login': typeof LoginRoute
+  '/productos': typeof ProductosRoute
+  '/reportes': typeof ReportesRoute
+  '/ventas/$saleId': typeof VentasSaleIdRoute
+  '/ventas/': typeof VentasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/clientes'
+    | '/configuracion'
+    | '/login'
+    | '/productos'
+    | '/reportes'
+    | '/ventas/$saleId'
+    | '/ventas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/clientes'
+    | '/configuracion'
+    | '/login'
+    | '/productos'
+    | '/reportes'
+    | '/ventas/$saleId'
+    | '/ventas'
+  id:
+    | '__root__'
+    | '/'
+    | '/clientes'
+    | '/configuracion'
+    | '/login'
+    | '/productos'
+    | '/reportes'
+    | '/ventas/$saleId'
+    | '/ventas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClientesRoute: typeof ClientesRoute
+  ConfiguracionRoute: typeof ConfiguracionRoute
+  LoginRoute: typeof LoginRoute
+  ProductosRoute: typeof ProductosRoute
+  ReportesRoute: typeof ReportesRoute
+  VentasSaleIdRoute: typeof VentasSaleIdRoute
+  VentasIndexRoute: typeof VentasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/clientes': {
+      id: '/clientes'
+      path: '/clientes'
+      fullPath: '/clientes'
+      preLoaderRoute: typeof ClientesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/configuracion': {
+      id: '/configuracion'
+      path: '/configuracion'
+      fullPath: '/configuracion'
+      preLoaderRoute: typeof ConfiguracionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/productos': {
+      id: '/productos'
+      path: '/productos'
+      fullPath: '/productos'
+      preLoaderRoute: typeof ProductosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reportes': {
+      id: '/reportes'
+      path: '/reportes'
+      fullPath: '/reportes'
+      preLoaderRoute: typeof ReportesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ventas/': {
+      id: '/ventas/'
+      path: '/ventas'
+      fullPath: '/ventas/'
+      preLoaderRoute: typeof VentasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ventas/$saleId': {
+      id: '/ventas/$saleId'
+      path: '/ventas/$saleId'
+      fullPath: '/ventas/$saleId'
+      preLoaderRoute: typeof VentasSaleIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClientesRoute: ClientesRoute,
+  ConfiguracionRoute: ConfiguracionRoute,
+  LoginRoute: LoginRoute,
+  ProductosRoute: ProductosRoute,
+  ReportesRoute: ReportesRoute,
+  VentasSaleIdRoute: VentasSaleIdRoute,
+  VentasIndexRoute: VentasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
